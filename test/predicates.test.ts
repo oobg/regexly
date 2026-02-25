@@ -104,6 +104,18 @@ describe("startsWith / endsWith / includes", () => {
     expect(regexly("hello").includes(/l{2}/).ok()).toBe(true);
     expect(regexly("file.ts").endsWith(/\.ts$/).ok()).toBe(true);
   });
+  it("startsWith(RegExp) auto-anchors: does not match mid-string", () => {
+    expect(regexly("hello").startsWith(/hel/).ok()).toBe(true);
+    expect(regexly("xhello").startsWith(/hel/).ok()).toBe(false);
+    // already-anchored source must not be double-anchored
+    expect(regexly("hello").startsWith(/^hel/).ok()).toBe(true);
+  });
+  it("endsWith(RegExp) auto-anchors: does not match mid-string", () => {
+    expect(regexly("hello").endsWith(/llo/).ok()).toBe(true);
+    expect(regexly("hellox").endsWith(/llo/).ok()).toBe(false);
+    // already-anchored source must not be double-anchored
+    expect(regexly("file.ts").endsWith(/\.ts$/).ok()).toBe(true);
+  });
 });
 
 describe("raw", () => {

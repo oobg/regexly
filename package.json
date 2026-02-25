@@ -16,6 +16,16 @@
   "sideEffects": false,
   "files": ["dist"],
   "license": "MIT",
+  "author": "regexly contributors",
+  "keywords": ["regex", "validation", "string", "chainable", "predicate", "readable"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oobg/regexly.git"
+  },
+  "homepage": "https://github.com/oobg/regexly#readme",
+  "bugs": {
+    "url": "https://github.com/oobg/regexly/issues"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",

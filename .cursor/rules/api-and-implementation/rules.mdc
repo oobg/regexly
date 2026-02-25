@@ -10,6 +10,7 @@ alwaysApply: false
 - **ok() / test()**: Combine "combinable" predicates into one regex (lookaheads) and run once; run non-combinable (minLength, maxLength, raw) separately. All must pass (AND).
 - **report()**: Run each predicate **individually** to collect passed/failed; do not use the combined regex so failure reasons are available.
 - **raw(re)**: Use the provided RegExp as-is; do not apply caseInsensitive or other options to it.
-- **startsWith/endsWith/includes**: When needle is string, escape it for regex; when RegExp, use as-is. Empty string needle: always pass.
-- **hasSymbol**: "At least one character that is not whitespace, digit, A–Z, a–z, or 가–힣" (e.g. `[^\s\dA-Za-z가-힣]`).
+- **startsWith/endsWith/includes**: When needle is string, escape it for regex; when RegExp, auto-add `^` (startsWith) or `$` (endsWith) anchor if not already present. `caseInsensitive()` does not apply to RegExp needles. Empty string needle: always pass.
+- **hasSymbol**: "At least one character that is not whitespace, digit, A–Z, a–z, or 가–힣" (e.g. `[^\s\dA-Za-z가-힣]`). Non-ASCII scripts are intentionally included as symbols in MVP.
 - **hasLanguage("ko")**: MVP supports only "ko" (Hangul 가–힣). Unsupported locale → treat as failed (ok() false), do not throw.
+- **minLength/maxLength argument validation**: Throw at predicate creation time (not at ok()/test() time) if n is negative or non-integer. This is intentional fail-fast behavior; other predicates that take no numeric arguments do not need this guard.

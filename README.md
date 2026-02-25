@@ -19,7 +19,7 @@ regexly("ab").hasNumber().hasUppercase().ok();      // false
 
 ## API (includes semantics)
 
-All checks use **includes** semantics: “does the string contain somewhere (or satisfy) this condition?”. There is no full-string match in this API.
+All checks use **includes** semantics: "does the string contain somewhere (or satisfy) this condition?". There is no full-string match in this API.
 
 | Method | Example |
 |--------|---------|
@@ -55,10 +55,12 @@ regexly("a").hasNumber().hasLetter().explain();
 
 ## Notes
 
-- **Includes semantics**: Only “somewhere” / substring-style checks. No “whole string must match” in this API.
+- **Includes semantics**: Only "somewhere" / substring-style checks. No "whole string must match" in this API.
 - **raw(re)**: Uses your `RegExp` as-is; `caseInsensitive()` and other options do not apply.
-- **hasSymbol()**: At least one character that is not whitespace, digit, A–Z, a–z, or Hangul (가–힣).
+- **hasSymbol()**: At least one character that is not whitespace, digit, A–Z, a–z, or Hangul (가–힣). Non-ASCII scripts (Japanese, Chinese, Arabic, etc.) are treated as symbols in MVP.
 - **hasLanguage(locale)**: MVP supports only `"ko"`. Other locales return `false` (no throw).
+- **startsWith(re) / endsWith(re)**: When needle is a `RegExp`, a `^` or `$` anchor is added automatically if not already present. `caseInsensitive()` does not apply to RegExp needles — set the `i` flag directly (e.g. `/hel/i`).
+- **minLength(n) / maxLength(n)**: Throws at call time if `n` is negative or non-integer (fail-fast).
 
 ## License
 
