@@ -1,4 +1,4 @@
-import type { ChainOptions, PredicateMeta, Report } from "../types.js";
+import type { ChainOptions, PredicateMeta, Report } from "../types";
 import {
   createHasNumber,
   createHasLetter,
@@ -12,7 +12,7 @@ import {
   createEndsWith,
   createIncludes,
   createRaw,
-} from "../predicates/index.js";
+} from "../predicates/index";
 
 export class Regexly {
   private readonly input: string;

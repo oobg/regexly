@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { regexly } from "../src/index.js";
+import { regexly } from "../src/index";
 
 describe("regexly entry point", () => {
   it("returns chain that can call ok(), report(), explain()", () => {

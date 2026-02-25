@@ -1,4 +1,4 @@
-import type { PredicateMeta } from "../types.js";
+import type { PredicateMeta } from "../types";
 
 /** Latin letters (A–Z, a–z) only. */
 export function createHasLetter(): PredicateMeta {

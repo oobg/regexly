@@ -1,7 +1,7 @@
-import { Regexly } from "./core/Regexly.js";
+import { Regexly } from "./core/Regexly";
 
-export type { Report } from "./types.js";
-export type { Regexly } from "./core/Regexly.js";
+export type { Report } from "./types";
+export type { Regexly } from "./core/Regexly";
 
 /**
  * Create a chainable validator for the given string (includes semantics: "somewhere" matches).

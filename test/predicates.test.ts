@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { regexly } from "../src/index.js";
+import { regexly } from "../src/index";
 
 describe("hasNumber", () => {
   it("passes when digit present", () => {
@@ -157,14 +157,22 @@ describe("ok() vs report() consistency", () => {
     expect(regexly("Ab").hasUppercase().ok()).toBe(regexly("Ab").hasUppercase().report().ok);
     expect(regexly("aB").hasLowercase().ok()).toBe(regexly("aB").hasLowercase().report().ok);
     expect(regexly("한").hasLanguage("ko").ok()).toBe(regexly("한").hasLanguage("ko").report().ok);
-    expect(regexly("abc").hasLanguage("ko").ok()).toBe(regexly("abc").hasLanguage("ko").report().ok);
+    expect(regexly("abc").hasLanguage("ko").ok()).toBe(
+      regexly("abc").hasLanguage("ko").report().ok
+    );
     expect(regexly("a@").hasSymbol().ok()).toBe(regexly("a@").hasSymbol().report().ok);
     expect(regexly("abc").hasSymbol().ok()).toBe(regexly("abc").hasSymbol().report().ok);
     expect(regexly("abc").minLength(3).ok()).toBe(regexly("abc").minLength(3).report().ok);
     expect(regexly("ab").maxLength(10).ok()).toBe(regexly("ab").maxLength(10).report().ok);
-    expect(regexly("hello").startsWith("hel").ok()).toBe(regexly("hello").startsWith("hel").report().ok);
-    expect(regexly("hello").endsWith("llo").ok()).toBe(regexly("hello").endsWith("llo").report().ok);
-    expect(regexly("hello").includes("ell").ok()).toBe(regexly("hello").includes("ell").report().ok);
+    expect(regexly("hello").startsWith("hel").ok()).toBe(
+      regexly("hello").startsWith("hel").report().ok
+    );
+    expect(regexly("hello").endsWith("llo").ok()).toBe(
+      regexly("hello").endsWith("llo").report().ok
+    );
+    expect(regexly("hello").includes("ell").ok()).toBe(
+      regexly("hello").includes("ell").report().ok
+    );
     expect(regexly("123").raw(/\d{3}/).ok()).toBe(regexly("123").raw(/\d{3}/).report().ok);
   });
 });

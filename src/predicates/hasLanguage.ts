@@ -1,4 +1,4 @@
-import type { PredicateMeta } from "../types.js";
+import type { PredicateMeta } from "../types";
 
 const KO_PATTERN = "[가-힣]";
 

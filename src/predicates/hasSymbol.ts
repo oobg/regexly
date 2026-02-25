@@ -1,4 +1,4 @@
-import type { PredicateMeta } from "../types.js";
+import type { PredicateMeta } from "../types";
 
 /** At least one character that is not whitespace, digit, A–Z, a–z, or 가–힣 */
 const SYMBOL_PATTERN = "[^\\s\\dA-Za-z가-힣]";

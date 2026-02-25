@@ -1,4 +1,4 @@
-import type { PredicateMeta } from "../types.js";
+import type { PredicateMeta } from "../types";
 
 export function createMinLength(n: number): PredicateMeta {
   if (n < 0 || !Number.isInteger(n)) {

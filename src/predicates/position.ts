@@ -1,5 +1,5 @@
-import type { ChainOptions, PredicateMeta } from "../types.js";
-import { escapeForRegex } from "../utils/escape.js";
+import type { ChainOptions, PredicateMeta } from "../types";
+import { escapeForRegex } from "../utils/escape";
 
 function buildPositionPredicate(
   name: string,
@@ -69,9 +69,7 @@ export function createIncludes(needle: string | RegExp): PredicateMeta {
     (input, opts) => {
       if (typeof needle === "string" && needle === "") return true;
       const re =
-        needle instanceof RegExp
-          ? needle
-          : new RegExp(escapeForRegex(needle), opts?.i ? "i" : "");
+        needle instanceof RegExp ? needle : new RegExp(escapeForRegex(needle), opts?.i ? "i" : "");
       return re.test(input);
     },
     typeof needle === "string" ? (needle === "" ? "" : escapeForRegex(needle)) : null
