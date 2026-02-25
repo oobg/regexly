@@ -67,12 +67,12 @@ regexly("a1").hasNumber().build({ global: true });  // RegExp with "g" flag
 ## Notes
 
 - **Includes semantics**: Only "somewhere" / substring-style checks. No "whole string must match" in this API.
-- **raw(re)**: Uses your `RegExp` as-is; `caseInsensitive()` and other options do not apply.
+- **raw(re)**: Uses your `RegExp` as-is; `caseInsensitive()` and other options do not apply. Multiple `raw()` predicates are distinguished in `report().failed` by a short pattern snippet in `name` (e.g. `raw(/\d/)`). Avoid patterns that cause catastrophic backtracking (e.g. nested quantifiers on overlapping alternations); `raw()` runs your RegExp as-is and can block the main thread.
 - **hasLetter()**: Latin letters only (A–Z, a–z). For other scripts use `hasLanguage(locale)` (e.g. `hasLanguage("ko")` for Hangul).
 - **hasLanguage(locale)**: MVP supports only `"ko"`. **Unsupported locale** (e.g. `"en"`, `"ja"`): always `false`, no error.
 - **hasSymbol()**: At least one character that is not whitespace, digit, A–Z, a–z, or Hangul (가–힣). Non-ASCII scripts (Japanese, Chinese, Arabic, etc.) are treated as symbols in MVP; in i18n contexts, "symbol" here includes non-Latin scripts.
 - **startsWith(re) / endsWith(re)**: When needle is a `RegExp`, a `^` or `$` anchor is added automatically if not already present. `caseInsensitive()` does not apply to RegExp needles — set the `i` flag directly (e.g. `/hel/i`).
-- **minLength(n) / maxLength(n)**: Throws at call time if `n` is negative or non-integer (fail-fast).
+- **minLength(n) / maxLength(n)**: Throws when the predicate is created (at chain build time) if `n` is negative or non-integer (fail-fast).
 
 ## License
 
