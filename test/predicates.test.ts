@@ -34,16 +34,33 @@ describe("hasUppercase / hasLowercase", () => {
   });
 });
 
-describe("hasLanguage(ko)", () => {
-  it("passes for Korean", () => {
+describe("hasLanguage", () => {
+  it("ko: passes for Korean", () => {
     expect(regexly("한").hasLanguage("ko").ok()).toBe(true);
     expect(regexly("한글").hasLanguage("ko").ok()).toBe(true);
   });
-  it("fails when no Korean", () => {
+  it("ko: fails when no Korean", () => {
     expect(regexly("abc").hasLanguage("ko").ok()).toBe(false);
   });
-  it("unsupported locale returns false (MVP)", () => {
-    expect(regexly("あ").hasLanguage("ja").ok()).toBe(false);
+  it("ja: passes for Japanese (Hiragana/Katakana/Han)", () => {
+    expect(regexly("あ").hasLanguage("ja").ok()).toBe(true);
+    expect(regexly("カ").hasLanguage("ja").ok()).toBe(true);
+    expect(regexly("日").hasLanguage("ja").ok()).toBe(true);
+  });
+  it("zh: passes for Chinese (Han)", () => {
+    expect(regexly("中").hasLanguage("zh").ok()).toBe(true);
+  });
+  it("th: passes for Thai", () => {
+    expect(regexly("ก").hasLanguage("th").ok()).toBe(true);
+  });
+  it("ar: passes for Arabic", () => {
+    expect(regexly("ا").hasLanguage("ar").ok()).toBe(true);
+  });
+  it("ru: passes for Cyrillic", () => {
+    expect(regexly("а").hasLanguage("ru").ok()).toBe(true);
+  });
+  it("unsupported locale returns false", () => {
+    expect(regexly("hello").hasLanguage("xy").ok()).toBe(false);
   });
 });
 

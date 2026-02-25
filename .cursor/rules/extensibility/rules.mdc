@@ -8,5 +8,5 @@ alwaysApply: false
 
 - **Interfaces**: Predicate, options, and report types are abstracted so new predicates and options can be added with minimal core changes.
 - **Future extensions** (design memo only for MVP): anyOf/or, not(), matchAll/full semantics, async validators. Keep extension points in types/interfaces.
-- **hasLanguage(locale)**: MVP supports "ko" only; add locale → pattern map for "ja", "zh", etc. when extending.
+- **hasLanguage(locale)**: Locale → pattern map in `src/data/lang-pattern.ts` (LOCALE_PATTERNS). Supported: ko, ja, zh, th, ar, ru, el, he. Add new locales there when extending.
 - When adding a new predicate: prefer one file per predicate, register name + testFn + optional patternSource; avoid changing core evaluation flow.
