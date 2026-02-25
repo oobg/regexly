@@ -1,3 +1,9 @@
+---
+description: Tree-shaking and bundle size: one export per file, barrel re-exports, sideEffects in package.json
+globs: "src/**/*.ts, package.json"
+alwaysApply: false
+---
+
 # Tree-shaking and bundle size
 
 - **One export per file** for predicates and utils so bundlers can drop unused code.

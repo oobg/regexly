@@ -1,3 +1,9 @@
+---
+description: All source comments, JSDoc, TODO/FIXME, and docs (e.g. README) must be in English
+globs: "src/**/*.ts, **/*.md, test/**/*.ts"
+alwaysApply: false
+---
+
 # Comments and documentation in English
 
 - This is an open-source library. **All source comments and documentation must be in English.**

@@ -1,3 +1,9 @@
+---
+description: Table of contents and short description of each regexly project rule file
+globs: "**/*"
+alwaysApply: false
+---
+
 # regexly project rules (table of contents)
 
 This project follows the rules defined in the files below. When editing or adding code, adhere to these rules.

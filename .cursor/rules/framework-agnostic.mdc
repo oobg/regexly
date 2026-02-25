@@ -1,3 +1,9 @@
+---
+description: Framework-agnostic code, pure functions, and public API (regexly) conventions
+globs: "src/**/*.ts"
+alwaysApply: false
+---
+
 # Framework-agnostic and functional style
 
 - Code must work in **Vue, React, SSR, CSR, and vanilla HTML** (and Node). No framework-specific APIs or DOM assumptions.

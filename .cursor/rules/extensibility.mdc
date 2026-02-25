@@ -1,3 +1,9 @@
+---
+description: Extensibility design: Predicate/options interfaces, adding new predicates, hasLanguage extension points
+globs: "src/types.ts, src/core/**/*.ts, src/predicates/**/*.ts"
+alwaysApply: false
+---
+
 # Extensibility design
 
 - **Interfaces**: Predicate, options, and report types are abstracted so new predicates and options can be added with minimal core changes.

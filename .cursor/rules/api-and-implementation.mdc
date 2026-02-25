@@ -1,3 +1,9 @@
+---
+description: API semantics: ok()/report()/raw(), hasSymbol/hasLanguage behavior, and implementation and test requirements
+globs: "src/**/*.ts, test/**/*.ts"
+alwaysApply: false
+---
+
 # API and implementation rules
 
 - **Semantics**: MVP is **includes only** (substring/pattern “somewhere”); no full-string match semantics in MVP.
