@@ -57,8 +57,9 @@ regexly("a").hasNumber().hasLetter().explain();
 
 - **Includes semantics**: Only "somewhere" / substring-style checks. No "whole string must match" in this API.
 - **raw(re)**: Uses your `RegExp` as-is; `caseInsensitive()` and other options do not apply.
-- **hasSymbol()**: At least one character that is not whitespace, digit, A–Z, a–z, or Hangul (가–힣). Non-ASCII scripts (Japanese, Chinese, Arabic, etc.) are treated as symbols in MVP.
-- **hasLanguage(locale)**: MVP supports only `"ko"`. Other locales return `false` (no throw).
+- **hasLetter()**: Latin letters only (A–Z, a–z). For other scripts use `hasLanguage(locale)` (e.g. `hasLanguage("ko")` for Hangul).
+- **hasLanguage(locale)**: MVP supports only `"ko"`. **Unsupported locale** (e.g. `"en"`, `"ja"`): always `false`, no error.
+- **hasSymbol()**: At least one character that is not whitespace, digit, A–Z, a–z, or Hangul (가–힣). Non-ASCII scripts (Japanese, Chinese, Arabic, etc.) are treated as symbols in MVP; in i18n contexts, "symbol" here includes non-Latin scripts.
 - **startsWith(re) / endsWith(re)**: When needle is a `RegExp`, a `^` or `$` anchor is added automatically if not already present. `caseInsensitive()` does not apply to RegExp needles — set the `i` flag directly (e.g. `/hel/i`).
 - **minLength(n) / maxLength(n)**: Throws at call time if `n` is negative or non-integer (fail-fast).
 

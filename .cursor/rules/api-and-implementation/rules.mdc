@@ -14,3 +14,4 @@ alwaysApply: false
 - **hasSymbol**: "At least one character that is not whitespace, digit, A–Z, a–z, or 가–힣" (e.g. `[^\s\dA-Za-z가-힣]`). Non-ASCII scripts are intentionally included as symbols in MVP.
 - **hasLanguage("ko")**: MVP supports only "ko" (Hangul 가–힣). Unsupported locale → treat as failed (ok() false), do not throw.
 - **minLength/maxLength argument validation**: Throw at predicate creation time (not at ok()/test() time) if n is negative or non-integer. This is intentional fail-fast behavior; other predicates that take no numeric arguments do not need this guard.
+- **Invariant**: `ok()` and `report().ok` must always agree. When adding a predicate with `patternSource`, ensure `test(input, options)` is equivalent to the combined-regex semantics (e.g. same result for any string). New predicates should have tests that cover both `ok()` and `report()` consistency.

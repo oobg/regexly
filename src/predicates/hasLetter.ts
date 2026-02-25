@@ -1,5 +1,6 @@
 import type { PredicateMeta } from "../types.js";
 
+/** Latin letters (A–Z, a–z) only. */
 export function createHasLetter(): PredicateMeta {
   return {
     name: "hasLetter",

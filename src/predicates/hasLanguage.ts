@@ -3,7 +3,7 @@ import type { PredicateMeta } from "../types.js";
 const KO_PATTERN = "[가-힣]";
 
 /**
- * MVP: only "ko" is supported. Unsupported locale → test returns false (per plan).
+ * MVP: only "ko" (Hangul) is supported. Unsupported locale yields false (no throw).
  */
 export function createHasLanguage(locale: string): PredicateMeta {
   const normalized = locale.toLowerCase().split("-")[0];
