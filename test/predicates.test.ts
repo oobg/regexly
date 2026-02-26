@@ -111,7 +111,12 @@ describe("startsWith / endsWith / includes", () => {
   it("includes accepts number (coerced to string)", () => {
     expect(regexly("a5b").includes(5).ok()).toBe(true);
     expect(regexly("abc").includes(5).ok()).toBe(false);
-    expect(regexly("x").includes(5).report().failed.map((f) => f.name)).toContain("includes(5)");
+    expect(
+      regexly("x")
+        .includes(5)
+        .report()
+        .failed.map((f) => f.name),
+    ).toContain("includes(5)");
   });
   it("empty needle always passes", () => {
     expect(regexly("x").startsWith("").ok()).toBe(true);
@@ -166,7 +171,7 @@ describe("caseInsensitive", () => {
       regexly("abc")
         .caseInsensitive()
         .raw(/^[A-Z]+$/)
-        .ok()
+        .ok(),
     ).toBe(false);
   });
 });
@@ -190,20 +195,20 @@ describe("ok() vs report() consistency", () => {
     expect(regexly("aB").hasLowercase().ok()).toBe(regexly("aB").hasLowercase().report().ok);
     expect(regexly("한").hasLanguage("ko").ok()).toBe(regexly("한").hasLanguage("ko").report().ok);
     expect(regexly("abc").hasLanguage("ko").ok()).toBe(
-      regexly("abc").hasLanguage("ko").report().ok
+      regexly("abc").hasLanguage("ko").report().ok,
     );
     expect(regexly("a@").hasSymbol().ok()).toBe(regexly("a@").hasSymbol().report().ok);
     expect(regexly("abc").hasSymbol().ok()).toBe(regexly("abc").hasSymbol().report().ok);
     expect(regexly("abc").minLength(3).ok()).toBe(regexly("abc").minLength(3).report().ok);
     expect(regexly("ab").maxLength(10).ok()).toBe(regexly("ab").maxLength(10).report().ok);
     expect(regexly("hello").startsWith("hel").ok()).toBe(
-      regexly("hello").startsWith("hel").report().ok
+      regexly("hello").startsWith("hel").report().ok,
     );
     expect(regexly("hello").endsWith("llo").ok()).toBe(
-      regexly("hello").endsWith("llo").report().ok
+      regexly("hello").endsWith("llo").report().ok,
     );
     expect(regexly("hello").includes("ell").ok()).toBe(
-      regexly("hello").includes("ell").report().ok
+      regexly("hello").includes("ell").report().ok,
     );
     expect(regexly("123").raw(/\d{3}/).ok()).toBe(regexly("123").raw(/\d{3}/).report().ok);
   });

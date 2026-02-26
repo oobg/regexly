@@ -4,7 +4,7 @@ import { escapeForRegex } from "../utils/escape";
 function buildPositionPredicate(
   name: string,
   testFn: (input: string, options?: ChainOptions) => boolean,
-  patternFragment: string | null
+  patternFragment: string | null,
 ): PredicateMeta {
   return {
     name,
@@ -45,7 +45,7 @@ export function createStartsWith(needle: string | RegExp): PredicateMeta {
       }
       return anchorStart(needle).test(input);
     },
-    typeof needle === "string" ? (needle === "" ? "" : `^${escapeForRegex(needle)}`) : null
+    typeof needle === "string" ? (needle === "" ? "" : `^${escapeForRegex(needle)}`) : null,
   );
 }
 
@@ -59,7 +59,7 @@ export function createEndsWith(needle: string | RegExp): PredicateMeta {
       }
       return anchorEnd(needle).test(input);
     },
-    typeof needle === "string" ? (needle === "" ? "" : `${escapeForRegex(needle)}$`) : null
+    typeof needle === "string" ? (needle === "" ? "" : `${escapeForRegex(needle)}$`) : null,
   );
 }
 
@@ -76,6 +76,6 @@ export function createIncludes(needle: string | number | RegExp): PredicateMeta 
           : new RegExp(escapeForRegex(effective), opts?.i ? "i" : "");
       return re.test(input);
     },
-    typeof effective === "string" ? (effective === "" ? "" : escapeForRegex(effective)) : null
+    typeof effective === "string" ? (effective === "" ? "" : escapeForRegex(effective)) : null,
   );
 }
