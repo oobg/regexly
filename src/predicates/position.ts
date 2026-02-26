@@ -63,22 +63,28 @@ export function createEndsWith(needle: string | RegExp): PredicateMeta {
   );
 }
 
-export function createIncludes(needle: string | RegExp, displayName?: string): PredicateMeta {
-  const defaultName = `includes(${needle instanceof RegExp ? needle.source : JSON.stringify(needle)})`;
+export function createIncludes(
+  needle: string | number | RegExp,
+  displayName?: string
+): PredicateMeta {
+  const effective = typeof needle === "number" ? String(needle) : needle;
+  const defaultName = `includes(${effective instanceof RegExp ? effective.source : JSON.stringify(needle)})`;
   return buildPositionPredicate(
     displayName ?? defaultName,
     (input, opts) => {
-      if (typeof needle === "string" && needle === "") return true;
+      if (typeof effective === "string" && effective === "") return true;
       const re =
-        needle instanceof RegExp ? needle : new RegExp(escapeForRegex(needle), opts?.i ? "i" : "");
+        effective instanceof RegExp
+          ? effective
+          : new RegExp(escapeForRegex(effective), opts?.i ? "i" : "");
       return re.test(input);
     },
-    typeof needle === "string" ? (needle === "" ? "" : escapeForRegex(needle)) : null
+    typeof effective === "string" ? (effective === "" ? "" : escapeForRegex(effective)) : null
   );
 }
 
 /** Same semantics as includes(needle); used for find(needle) chain with "find(...)" in report. */
-export function createFind(needle: string | RegExp): PredicateMeta {
+export function createFind(needle: string | number | RegExp): PredicateMeta {
   const name = `find(${needle instanceof RegExp ? needle.source : JSON.stringify(needle)})`;
   return createIncludes(needle, name);
 }

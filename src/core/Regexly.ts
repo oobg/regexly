@@ -72,11 +72,11 @@ export class Regexly {
     return this.addPredicate(createEndsWith(needle));
   }
 
-  includes(needle: string | RegExp): this {
+  includes(needle: string | number | RegExp): this {
     return this.addPredicate(createIncludes(needle));
   }
 
-  find(needle: string | RegExp): this {
+  find(needle: string | number | RegExp): this {
     return this.addPredicate(createFind(needle));
   }
 

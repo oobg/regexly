@@ -113,6 +113,13 @@ describe("startsWith / endsWith / includes", () => {
     expect(regexly("hello").find("xyz").ok()).toBe(false);
     expect(regexly("hello").find(/l{2}/).ok()).toBe(true);
   });
+  it("includes and find accept number (coerced to string)", () => {
+    expect(regexly("a5b").includes(5).ok()).toBe(true);
+    expect(regexly("a5b").find(5).ok()).toBe(true);
+    expect(regexly("abc").includes(5).ok()).toBe(false);
+    expect(regexly("abc").find(5).ok()).toBe(false);
+    expect(regexly("x").find(5).report().failed.map((f) => f.name)).toContain("find(5)");
+  });
   it("find appears as find(...) in report", () => {
     const r = regexly("hello").find("ell").report();
     expect(r.ok).toBe(true);
