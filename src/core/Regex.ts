@@ -14,14 +14,14 @@ import {
   createRaw,
 } from "../predicates/index";
 
-export class Regexly {
+export class Regex {
   private readonly input: string;
   private options: ChainOptions = {};
   private readonly predicates: PredicateMeta[] = [];
 
   constructor(input: string) {
     if (typeof input !== "string") {
-      throw new TypeError("regexly() expects a string");
+      throw new TypeError("regex() expects a string");
     }
     this.input = input;
   }

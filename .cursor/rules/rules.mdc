@@ -1,10 +1,10 @@
 ---
-description: Table of contents and short description of each regexly project rule file
+description: Table of contents and short description of each oh-my-regex project rule file
 globs: "**/*"
 alwaysApply: true
 ---
 
-# regexly project rules (table of contents)
+# oh-my-regex project rules (table of contents)
 
 This project follows the rules defined in the files below. When editing or adding code, adhere to these rules.
 

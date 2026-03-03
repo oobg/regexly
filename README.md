@@ -1,20 +1,20 @@
-# regexly
+# oh-my-regex
 
 Readable string validation without writing regex — chainable predicate API.
 
 ## Install
 
 ```bash
-npm i regexly
+npm i oh-my-regex
 ```
 
 ## Quick start
 
 ```ts
-import { regexly } from "regexly";
+import { regex } from "oh-my-regex";
 
-regexly("123cose98").hasNumber().hasLetter().ok(); // true
-regexly("ab").hasNumber().hasUppercase().ok();      // false
+regex("123cose98").hasNumber().hasLetter().ok(); // true
+regex("ab").hasNumber().hasUppercase().ok();      // false
 ```
 
 ## API (includes semantics)
@@ -23,15 +23,15 @@ All checks use **includes** semantics: "does the string contain somewhere (or sa
 
 | Method | Example |
 |--------|---------|
-| `hasNumber()` | `regexly("x1").hasNumber().ok()` |
-| `hasLetter()` | `regexly("1a").hasLetter().ok()` |
-| `hasUppercase()` / `hasLowercase()` | `regexly("Ab").hasUppercase().ok()` |
-| `hasLanguage("ko")` | `regexly("한글").hasLanguage("ko").ok()` (MVP: "ko" only) |
-| `hasSymbol()` | `regexly("a@").hasSymbol().ok()` |
-| `minLength(n)` / `maxLength(n)` | `regexly("abc").minLength(3).ok()` |
-| `startsWith(needle)` / `endsWith(needle)` / `includes(needle)` | `regexly("hello").includes("ell").ok()` |
-| `raw(re)` | `regexly("123").raw(/\d{3}/).ok()` (options like caseInsensitive do not apply) |
-| `caseInsensitive()` | `regexly("ABC").caseInsensitive().hasLetter().ok()` |
+| `hasNumber()` | `regex("x1").hasNumber().ok()` |
+| `hasLetter()` | `regex("1a").hasLetter().ok()` |
+| `hasUppercase()` / `hasLowercase()` | `regex("Ab").hasUppercase().ok()` |
+| `hasLanguage("ko")` | `regex("한글").hasLanguage("ko").ok()` (MVP: "ko" only) |
+| `hasSymbol()` | `regex("a@").hasSymbol().ok()` |
+| `minLength(n)` / `maxLength(n)` | `regex("abc").minLength(3).ok()` |
+| `startsWith(needle)` / `endsWith(needle)` / `includes(needle)` | `regex("hello").includes("ell").ok()` |
+| `raw(re)` | `regex("123").raw(/\d{3}/).ok()` (options like caseInsensitive do not apply) |
+| `caseInsensitive()` | `regex("ABC").caseInsensitive().hasLetter().ok()` |
 
 End with:
 
@@ -43,25 +43,25 @@ End with:
 ## report() example
 
 ```ts
-const r = regexly("ab").hasNumber().hasUppercase().report();
+const r = regex("ab").hasNumber().hasUppercase().report();
 // { ok: false, failed: [{ name: "hasNumber" }, { name: "hasUppercase" }], passed: [] }
 ```
 
 ## explain() example
 
 ```ts
-regexly("a").hasNumber().hasLetter().explain();
+regex("a").hasNumber().hasLetter().explain();
 // "Failed: hasNumber. Passed: hasLetter"
 ```
 
 ## build() example
 
 ```ts
-const re = regexly("x").hasNumber().hasLetter().build();
+const re = regex("x").hasNumber().hasLetter().build();
 // RegExp from combinable predicates; re.test("a1") === true
 
-regexly("x").build();                    // null (no combinable predicates)
-regexly("a1").hasNumber().build({ global: true });  // RegExp with "g" flag
+regex("x").build();                    // null (no combinable predicates)
+regex("a1").hasNumber().build({ global: true });  // RegExp with "g" flag
 ```
 
 ## Notes

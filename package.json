@@ -1,5 +1,5 @@
 {
-  "name": "regexly",
+  "name": "oh-my-regex",
   "version": "0.1.0",
   "description": "Readable string validation without writing regex — chainable predicate API",
   "type": "module",
@@ -14,17 +14,26 @@
     }
   },
   "sideEffects": false,
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
-  "author": "regexly contributors",
-  "keywords": ["regex", "validation", "string", "chainable", "predicate", "readable"],
+  "author": "oh-my-regex contributors",
+  "keywords": [
+    "regex",
+    "validation",
+    "string",
+    "chainable",
+    "predicate",
+    "readable"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/oobg/regexly.git"
+    "url": "https://github.com/oobg/oh-my-regex.git"
   },
-  "homepage": "https://github.com/oobg/regexly#readme",
+  "homepage": "https://github.com/oobg/oh-my-regex#readme",
   "bugs": {
-    "url": "https://github.com/oobg/regexly/issues"
+    "url": "https://github.com/oobg/oh-my-regex/issues"
   },
   "scripts": {
     "build": "tsup",

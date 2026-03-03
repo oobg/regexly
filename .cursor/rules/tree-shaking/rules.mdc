@@ -9,5 +9,5 @@ alwaysApply: false
 - **One export per file** for predicates and utils so that future entry points or composition can enable tree-shaking.
 - **Barrel file** (`predicates/index.ts`): re-export only; no side effects or logic.
 - **package.json**: set `"sideEffects": false`.
-- The default `regexly()` API imports all predicates; unused predicates are not tree-shaken from the main bundle.
+- The default `regex()` API imports all predicates; unused predicates are not tree-shaken from the main bundle.
 - Do not aggregate all predicates in a single module with side effects; keep them in separate files and re-export from the barrel.
