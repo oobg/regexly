@@ -2,6 +2,8 @@
 
 Readable string validation without writing regex — chainable predicate API.
 
+See [Roadmap](./loadmap.md) for plans and future ideas.
+
 ## Install
 
 ```bash
